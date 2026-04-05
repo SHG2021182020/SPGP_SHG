@@ -1,11 +1,17 @@
 1. 게임 컨셉
+   
    뱀파이어 서바이벌 느낌의 2D 로그라이크 서바이벌 게임
-2. 핵심 요소
+   
+3. 핵심 요소
+
    ㄱ. 자동 공격
+
    ㄴ. 몬스터의 추적 및 경험치, 레벨업 시스템
+
    ㄷ. 장비와 세트 효과
 
-3. 개발 범위
+4. 개발 범위
+
    ㄱ. 플레이어 - 8방향 이동, 하단 체력바
    
    ㄴ. 몬스터 - 일반 몬스터(플레이어 추격) 3종, 특수 몬스터(돌격, 관통 등) 2종
@@ -17,6 +23,7 @@
    ㅁ. UI - 게임 시작화면, 하단 예시와 비슷하게 정보를 종합한 결과창, 그 외 이펙트
 
 예시 이미지
+
 <img width="746" height="389" alt="image" src="https://github.com/user-attachments/assets/eadb522a-7a86-4d63-8d48-a89fb8f3b400" />
 
 <img width="751" height="412" alt="image" src="https://github.com/user-attachments/assets/1687e167-5a33-4394-8cda-0053ba2777ca" />
