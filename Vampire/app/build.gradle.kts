@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "kr.ac.tukorea.ge.spgp2026.Vampire"
+    namespace = "kr.ac.tukorea.ge.spgp2026.vampire"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1

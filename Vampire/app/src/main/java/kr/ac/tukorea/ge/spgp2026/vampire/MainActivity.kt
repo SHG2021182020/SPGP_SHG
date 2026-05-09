@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp2026.Vampire
+package kr.ac.tukorea.ge.spgp2026.vampire
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import kr.ac.tukorea.ge.spgp2026.Vampire.databinding.ActivityMainBinding
+import kr.ac.tukorea.ge.spgp2026.vampire.databinding.ActivityMainBinding
 import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {

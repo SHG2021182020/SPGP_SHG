@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp2026.Vampire
+package kr.ac.tukorea.ge.spgp2026.vampire
 
 import android.view.MotionEvent
 import kr.ac.tukorea.ge.spgp2026.a2dg.objects.HorzScrollBackground

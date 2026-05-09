@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp2026.Vampire
+package kr.ac.tukorea.ge.spgp2026.vampire
 
 import org.junit.Test
 
