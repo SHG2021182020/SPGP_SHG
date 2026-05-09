@@ -4,8 +4,7 @@ import kr.ac.tukorea.ge.spgp2026.a2dg.objects.JoyStick
 import kr.ac.tukorea.ge.spgp2026.a2dg.scene.Scene
 import kr.ac.tukorea.ge.spgp2026.a2dg.view.GameContext
 import kr.ac.tukorea.ge.spgp2026.a2dg.view.GameView
-// 1번의 해결로 R 클래스가 정상 생성되겠지만, 확실히 하기 위해 명시적 임포트
-import kr.ac.tukorea.ge.spgp2026.vampire.R
+import kr.ac.tukorea.ge.spgp2026.dragonflight.R
 
 class MainScene(gctx: GameContext) : Scene(gctx) {
 
@@ -13,29 +12,23 @@ class MainScene(gctx: GameContext) : Scene(gctx) {
         BG, ENEMY, ITEM, WEAPON, PLAYER, UI
     }
 
-    private lateinit var joyStick: JoyStick
-    private lateinit var player: Player
+    // lateinit의 불필요한 남발을 막고 클래스 생성 시점에 즉시 할당합니다.
+    // GameView.view는 null이 아니므로 안전 호출(?.)을 제거했습니다.
+    private val joyStick = JoyStick(
+        gctx,
+        centerX = 200f,
+        centerY = GameView.view.height.toFloat() - 200f,
+        bgRadius = 150f,
+        thumbRadius = 50f,
+        bgResId = R.mipmap.tu_joystick_bg,
+        thumbResId = R.mipmap.tu_joystick_thumb
+    )
 
-    // 🚨 override fun appendObjects() 같은 없는 함수를 쓰지 말고 init 블록을 사용합니다.
+    private val player = Player(gctx, joyStick)
+
     init {
-        // GameContext에 height가 없을 수 있으므로 GameView에서 안전하게 화면 크기를 가져옵니다.
-        val viewWidth = GameView.view?.width?.toFloat() ?: 1000f
-        val viewHeight = GameView.view?.height?.toFloat() ?: 2000f
-
-        joyStick = JoyStick(
-            gctx,
-            centerX = 200f,
-            centerY = viewHeight - 200f,
-            bgRadius = 150f,
-            thumbRadius = 50f,
-            bgResId = R.mipmap.tu_joystick_bg,
-            thumbResId = R.mipmap.tu_joystick_thumb
-        )
-
-        // Enum의 순서값(Int)을 사용하여 레이어에 객체를 추가합니다.
+        // Enum의 ordinal 값을 정확히 추출하여 add 에러를 방지합니다.
         add(Layer.UI.ordinal, joyStick)
-
-        player = Player(gctx, joyStick)
         add(Layer.PLAYER.ordinal, player)
     }
 }
