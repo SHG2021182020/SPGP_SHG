@@ -1,8 +1,7 @@
-package kr.ac.tukorea.ge.spgp2026.dragonflight
+package kr.ac.tukorea.ge.spgp2026.Vampire
 
 import android.view.MotionEvent
 import kr.ac.tukorea.ge.spgp2026.a2dg.objects.HorzScrollBackground
-import kr.ac.tukorea.ge.spgp2026.a2dg.objects.VertScrollBackground
 import kr.ac.tukorea.ge.spgp2026.a2dg.scene.Scene
 import kr.ac.tukorea.ge.spgp2026.a2dg.scene.World
 import kr.ac.tukorea.ge.spgp2026.a2dg.view.GameContext

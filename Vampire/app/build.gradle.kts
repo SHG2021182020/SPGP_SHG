@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "kr.ac.tukorea.ge.spgp2026.dragonflight"
+    namespace = "kr.ac.tukorea.ge.spgp2026.Vampire"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1

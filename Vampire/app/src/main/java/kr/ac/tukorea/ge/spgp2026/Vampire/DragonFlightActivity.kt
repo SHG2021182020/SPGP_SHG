@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp2026.dragonflight
+package kr.ac.tukorea.ge.spgp2026.Vampire
 
 import kr.ac.tukorea.ge.spgp2026.a2dg.activity.BaseGameActivity
 import kr.ac.tukorea.ge.spgp2026.a2dg.scene.Scene

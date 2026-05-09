@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp2026.dragonflight
+package kr.ac.tukorea.ge.spgp2026.Vampire
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

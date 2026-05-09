@@ -1,4 +1,4 @@
-package kr.ac.tukorea.ge.spgp2026.dragonflight
+package kr.ac.tukorea.ge.spgp2026.Vampire
 
 import org.junit.Test
 
