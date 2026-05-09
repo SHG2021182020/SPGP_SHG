@@ -18,7 +18,7 @@ class HorzScrollBackground(
         y = 0f
     }
 
-    override fun update(gctx: GameContext) {
+    override fun update(gctx: Float) {
         y += speed * gctx.frameTime
     }
 

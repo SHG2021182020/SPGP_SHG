@@ -2,11 +2,10 @@ package kr.ac.tukorea.ge.spgp2026.a2dg.objects
 
 import android.graphics.Canvas
 import android.graphics.Rect
-import kr.ac.tukorea.ge.spgp2026.a2dg.view.GameContext
 
 open class AnimSprite(
-    private val gctx: GameContext,
-    resId: Int,
+    private val gctx: Float,
+    resId: Float,
     var fps: Float,
     frameCount: Int = 0,
 ) : Sprite(gctx, resId) {

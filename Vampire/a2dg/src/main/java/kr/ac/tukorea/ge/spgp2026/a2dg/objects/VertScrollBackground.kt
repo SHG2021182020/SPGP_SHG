@@ -22,7 +22,7 @@ open class VertScrollBackground(
         setCenterProportionalWidth(screenWidth / 2f, screenHeight / 2f, screenWidth)
     }
 
-    override fun update(gctx: GameContext) {
+    override fun update(gctx: Float) {
         // y 값을 중심점이 아니라 누적 스크롤 양으로 사용하므로,
         // 배경 자체를 이동시키지 않고 "어디서부터 반복 배치를 시작할지"만 바꾼다고 보면 된다.
         y += speed * gctx.frameTime

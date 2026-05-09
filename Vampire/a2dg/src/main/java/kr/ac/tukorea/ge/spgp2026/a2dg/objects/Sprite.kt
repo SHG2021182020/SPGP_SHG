@@ -73,7 +73,7 @@ open class Sprite(
     val bitmapHeight: Int
         get() = bitmap.height
 
-    override fun update(gctx: GameContext) {
+    fun update(gctx: Float) {
     }
 
     override fun draw(canvas: Canvas) {

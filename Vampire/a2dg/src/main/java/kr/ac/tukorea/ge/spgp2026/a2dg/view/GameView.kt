@@ -42,6 +42,8 @@ class GameView @JvmOverloads constructor(
         }
 
     companion object {
+        val view: Any
+
         // GameView 가 직접 BuildConfig 를 읽지는 않지만,
         // 바깥쪽 app 코드가 이 값을 채워 넣어 디버그 표시 여부를 제어할 수 있게 한다.
         var drawsDebugGrid = true
