@@ -37,9 +37,9 @@ class EnemyGenerator(
 
         val rand = Random.nextFloat()
         val enemy: IGameObject = when {
-            rand < 0.1f -> SpitterZombie(gctx, scene, gridBg, spawnX, spawnY) // 20% 원거리
-            rand < 0.2f -> ChargerZombie(gctx, gridBg, spawnX, spawnY)        // 30% 돌진
-            else -> Zombie(gctx, gridBg, spawnX, spawnY)                      // 50% 일반
+            rand < 0.1f -> SpitterZombie(gctx, scene, gridBg, spawnX, spawnY) // 10% 원거리
+            rand < 0.2f -> ChargerZombie(gctx, gridBg, spawnX, spawnY)        // 20% 돌진
+            else -> Zombie(gctx, gridBg, spawnX, spawnY)                      // 70% 일반
         }
 
         scene.world.add(enemy, MainScene.Layer.ENEMY)
