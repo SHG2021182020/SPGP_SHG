@@ -50,3 +50,6 @@
 7주차 - 경험치 및 레벨 업 시스템 0%
 
 8주차 - 웨이브 시스템 0%
+
+<img width="906" height="543" alt="image" src="https://github.com/user-attachments/assets/38249d15-56a4-4c9e-ace5-637063be52af" />
+
