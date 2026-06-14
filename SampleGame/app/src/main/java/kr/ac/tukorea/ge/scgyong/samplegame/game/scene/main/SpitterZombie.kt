@@ -1,42 +1,28 @@
 package kr.ac.tukorea.ge.scgyong.samplegame.game.scene.main
 
-import android.graphics.Canvas
-import kr.ac.tukorea.ge.spgp2026.a2dg.objects.IGameObject
-import kr.ac.tukorea.ge.spgp2026.a2dg.objects.Sprite
+import kr.ac.tukorea.ge.spgp2026.a2dg.R
 import kr.ac.tukorea.ge.spgp2026.a2dg.view.GameContext
-import kr.ac.tukorea.ge.scgyong.samplegame.R
 import kotlin.math.*
 
 class SpitterZombie(
-    private val gctx: GameContext,
-    private val scene: MainScene,
-    private val gridBg: GridBackground,
-    private var worldX: Float,
-    private var worldY: Float
-) : IGameObject {
+    gctx: GameContext, scene: MainScene, gridBg: GridBackground, worldX: Float, worldY: Float
+) : BaseZombie(
+    gctx, scene, gridBg, worldX, worldY,
+    resId = kr.ac.tukorea.ge.scgyong.samplegame.R.mipmap.spitter, // 🚨 핵심: 부모에게 지팡이 몬스터 이미지를 전달
+    width = 100f, height = 200f, hp = 15
+) {
 
-    private val sprite = Sprite(gctx, R.mipmap.soccer_ball_240)
     private val speed = 150f
     private val stopDistance = 600f
-
     private var fireTimer = 0f
     private val fireInterval = 5.0f
 
-    init {
-        sprite.width = 100f
-        sprite.height = 100f
-    }
-
-    override fun update(gctx: GameContext) {
-        val playerWorldX = -gridBg.offsetX + gctx.metrics.width / 2f
-        val playerWorldY = -gridBg.offsetY + gctx.metrics.height / 2f
-
+    override fun updateAI(dt: Float, playerWorldX: Float, playerWorldY: Float) {
+        if (scene.isUiOverlayActive) return
         val dx = playerWorldX - worldX
         val dy = playerWorldY - worldY
         val distance = sqrt(dx * dx + dy * dy)
         val angle = atan2(dy.toDouble(), dx.toDouble())
-
-        val dt = 1f / 60f
 
         if (distance > stopDistance) {
             worldX += (cos(angle) * speed * dt).toFloat()
@@ -48,17 +34,14 @@ class SpitterZombie(
             fireTimer = 0f
             spawnProjectile(angle)
         }
-
-        sprite.x = worldX + gridBg.offsetX
-        sprite.y = worldY + gridBg.offsetY
     }
 
     private fun spawnProjectile(angle: Double) {
-        val bullet = EnemyBullet(gctx, gridBg, worldX, worldY, angle)
-        scene.world.add(bullet, MainScene.Layer.ENEMY)
-    }
+        // 🚨 허점 해결: EnemyBullet 생성자의 변경된 시그니처에 맞춰 첫 번째 인자로 scene을 주입합니다.
+        val bullet = EnemyBullet(scene, gctx, gridBg, worldX, worldY, angle.toFloat())
 
-    override fun draw(canvas: Canvas) {
-        sprite.draw(canvas)
+        // 투사체는 적과 레이어를 분리하여 WEAPON 레이어 등으로 관리하는 것이 일반적이나,
+        // 기존 설계를 존중하여 ENEMY 레이어에 추가합니다.
+        scene.world.add(bullet, MainScene.Layer.ENEMY)
     }
 }

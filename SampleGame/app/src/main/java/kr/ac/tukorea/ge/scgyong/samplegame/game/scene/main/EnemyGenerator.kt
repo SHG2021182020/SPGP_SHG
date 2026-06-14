@@ -29,20 +29,23 @@ class EnemyGenerator(
         val playerWorldX = -gridBg.offsetX + gctx.metrics.width / 2f
         val playerWorldY = -gridBg.offsetY + gctx.metrics.height / 2f
 
-        val angle = Random.nextDouble(0.0, 2 * Math.PI)
+        val angle = kotlin.random.Random.nextDouble(0.0, 2 * Math.PI)
         val spawnRadius = 1500f
 
         val spawnX = playerWorldX + (cos(angle) * spawnRadius).toFloat()
         val spawnY = playerWorldY + (sin(angle) * spawnRadius).toFloat()
 
-        val rand = Random.nextFloat()
+        val rand = kotlin.random.Random.nextFloat()
         val enemy: IGameObject = when {
-            rand < 0.1f -> SpitterZombie(gctx, scene, gridBg, spawnX, spawnY) // 10% 원거리
-            rand < 0.2f -> ChargerZombie(gctx, gridBg, spawnX, spawnY)        // 20% 돌진
-            else -> Zombie(gctx, gridBg, spawnX, spawnY)                      // 70% 일반
+            rand < 0.1f -> SpitterZombie(gctx, scene, gridBg, spawnX, spawnY) // this가 아니라 scene!
+            rand < 0.2f -> ChargerZombie(gctx, scene, gridBg, spawnX, spawnY) // scene 파라미터 추가
+            else -> Zombie(gctx, scene, gridBg, spawnX, spawnY)               // scene 파라미터 추가
         }
 
         scene.world.add(enemy, MainScene.Layer.ENEMY)
+
+        // 주의: 오토 타겟팅 무기가 적을 인식하려면 아래 코드도 반드시 추가해야 해!
+        scene.enemies.add(enemy as IEnemy)
     }
 
     override fun draw(canvas: Canvas) {

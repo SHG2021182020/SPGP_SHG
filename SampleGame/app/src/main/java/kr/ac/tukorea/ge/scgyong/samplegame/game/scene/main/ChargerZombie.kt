@@ -1,40 +1,26 @@
 package kr.ac.tukorea.ge.scgyong.samplegame.game.scene.main
 
-import android.graphics.Canvas
-import kr.ac.tukorea.ge.spgp2026.a2dg.objects.IGameObject
-import kr.ac.tukorea.ge.spgp2026.a2dg.objects.Sprite
 import kr.ac.tukorea.ge.spgp2026.a2dg.view.GameContext
-import kr.ac.tukorea.ge.scgyong.samplegame.R
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
 
 class ChargerZombie(
-    private val gctx: GameContext,
-    private val gridBg: GridBackground,
-    private var worldX: Float,
-    private var worldY: Float
-) : IGameObject {
-
-    private val sprite = Sprite(gctx, R.mipmap.soccer_ball_240)
+    gctx: GameContext, scene: MainScene, gridBg: GridBackground, worldX: Float, worldY: Float
+) : BaseZombie(
+    gctx, scene, gridBg, worldX, worldY,
+    resId = kr.ac.tukorea.ge.scgyong.samplegame.R.mipmap.tank, // 🚨 핵심: 부모에게 낫 몬스터 이미지를 전달
+    width = 150f, height = 150f, hp = 20
+) {
 
     private var state = 0
     private var stateTimer = 0f
-
-    private val normalSpeed = 00f
+    private val normalSpeed = 0f
     private val dashSpeed = 1000f
     private var dashAngle = 0.0
 
-    init {
-        sprite.width = 200f
-        sprite.height = 200f
-    }
-
-    override fun update(gctx: GameContext) {
-        val playerWorldX = -gridBg.offsetX + gctx.metrics.width / 2f
-        val playerWorldY = -gridBg.offsetY + gctx.metrics.height / 2f
-
-        val dt = 1f / 60f
+    override fun updateAI(dt: Float, playerWorldX: Float, playerWorldY: Float) {
+        if (scene.isUiOverlayActive) return
         stateTimer += dt
 
         when (state) {
@@ -77,12 +63,5 @@ class ChargerZombie(
                 }
             }
         }
-
-        sprite.x = worldX + gridBg.offsetX
-        sprite.y = worldY + gridBg.offsetY
-    }
-
-    override fun draw(canvas: Canvas) {
-        sprite.draw(canvas)
     }
 }
